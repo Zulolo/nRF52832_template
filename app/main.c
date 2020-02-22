@@ -85,8 +85,8 @@
 #include "nrf_log_default_backends.h"
 
 
-#define DEVICE_NAME                         "ZULO_HRM"                            /**< Name of device. Will be included in the advertising data. */
-#define MANUFACTURER_NAME                   "CHINT"                   /**< Manufacturer. Will be passed to Device Information Service. */
+#define DEVICE_NAME                         "TEST_HRM"                            /**< Name of device. Will be included in the advertising data. */
+#define MANUFACTURER_NAME                   "TEST"                   /**< Manufacturer. Will be passed to Device Information Service. */
 
 #define APP_BLE_OBSERVER_PRIO               3                                       /**< Application's BLE observer priority. You shouldn't need to modify this value. */
 #define APP_BLE_CONN_CFG_TAG                1                                       /**< A tag identifying the SoftDevice BLE configuration. */
