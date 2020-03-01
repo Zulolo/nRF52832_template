@@ -312,7 +312,7 @@
           </ArmAdsMisc>
           <Cads>
             <interw>1</interw>
-            <Optim>4</Optim>
+            <Optim>1</Optim>
             <oTime>0</oTime>
             <SplitLS>0</SplitLS>
             <OneElfS>1</OneElfS>
@@ -336,9 +336,9 @@
             <v6Rtti>0</v6Rtti>
             <VariousControls>
               <MiscControls>--reduce_paths</MiscControls>
-              <Define>BOARD_CUSTOM CONFIG_GPIO_AS_PINRESET FLOAT_ABI_HARD FREERTOS NRF52 NRF52832_XXAA NRF52_PAN_74 NRF_SD_BLE_API_VERSION=7 S132 SOFTDEVICE_PRESENT __HEAP_SIZE=1024 __STACK_SIZE=2048</Define>
+              <Define>BOARD_CUSTOM CONFIG_GPIO_AS_PINRESET FLOAT_ABI_HARD FREERTOS NRF52 NRF52832_XXAA NRF52_PAN_74 NRF_SD_BLE_API_VERSION=7 S132 SOFTDEVICE_PRESENT __HEAP_SIZE=8192 __STACK_SIZE=8192</Define>
               <Undefine></Undefine>
-              <IncludePath>.\libraries\util;.\third_party\freertos\source\include;.\nrfx\hal;.\app;.\nrfx\soc;.\nrfx;.\softdevice;.\third_party\freertos\portable\ARM\nrf52;.\third_party\freertos\portable\CMSIS\nrf52;.\ble\common;.\ble\ble_advertising;.\ble\ble_db_discovery;.\ble\ble_services\ble_bas;.\ble\nrf_ble_gatt;.\ble\peer_manager;.\drivers;.\libraries\button;.\libraries\experimental_section_vars;.\libraries\atomic;.\libraries\atomic_fifo;.\libraries\log;.\libraries\strerror;.\third_party\fprintf;.\libraries\balloc;.\libraries\fds;.\libraries\timer;.\libraries\log\src;.\libraries\fstorage;.\libraries\mem_manager;.\libraries\memobj;.\nrfx\drivers\include;.\libraries\atomic_flags;.\libraries\ringbuf;.\drivers\legacy;.\libraries\bsp;.\libraries\mutex;.\hw;.\ble\ble_services\ble_hrs;.\ble\ble_services\ble_dis;.\libraries\sensorsim;.\ble\nrf_ble_qwr</IncludePath>
+              <IncludePath>.\libraries\util;.\third_party\freertos\source\include;.\nrfx\hal;.\app;.\nrfx\soc;.\nrfx;.\softdevice;.\third_party\freertos\portable\ARM\nrf52;.\third_party\freertos\portable\CMSIS\nrf52;.\ble\common;.\ble\ble_advertising;.\ble\ble_db_discovery;.\ble\ble_services\ble_bas;.\ble\nrf_ble_gatt;.\ble\peer_manager;.\drivers;.\libraries\button;.\libraries\experimental_section_vars;.\libraries\atomic;.\libraries\atomic_fifo;.\libraries\log;.\libraries\strerror;.\third_party\fprintf;.\libraries\balloc;.\libraries\fds;.\libraries\timer;.\libraries\log\src;.\libraries\fstorage;.\libraries\mem_manager;.\libraries\memobj;.\nrfx\drivers\include;.\libraries\atomic_flags;.\libraries\ringbuf;.\drivers\legacy;.\libraries\bsp;.\libraries\mutex;.\hw;.\ble\ble_services\ble_hrs;.\ble\ble_services\ble_dis;.\libraries\sensorsim;.\ble\nrf_ble_qwr;.\libraries\delay;.\third_party\segger_rtt</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -391,6 +391,11 @@
               <FileName>sdk_config.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\app\sdk_config.h</FilePath>
+            </File>
+            <File>
+              <FileName>spi_meter.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\app\spi_meter.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -651,6 +656,11 @@
               <FileName>nrf_drv_uart.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\drivers\legacy\nrf_drv_uart.c</FilePath>
+            </File>
+            <File>
+              <FileName>nrfx_spim.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\nrfx\drivers\src\nrfx_spim.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -1257,6 +1267,11 @@
               <FileType>5</FileType>
               <FilePath>.\app\sdk_config.h</FilePath>
             </File>
+            <File>
+              <FileName>spi_meter.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\app\spi_meter.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -1516,6 +1531,11 @@
               <FileName>nrf_drv_uart.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\drivers\legacy\nrf_drv_uart.c</FilePath>
+            </File>
+            <File>
+              <FileName>nrfx_spim.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\nrfx\drivers\src\nrfx_spim.c</FilePath>
             </File>
           </Files>
         </Group>

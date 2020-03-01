@@ -111,6 +111,8 @@
 
 #define SENSOR_CONTACT_DETECTED_INTERVAL    5000                                    /**< Sensor Contact Detected toggle interval (ms). */
 
+#define TEST_PRINTF_INTERVAL    						2000
+
 #define MIN_CONN_INTERVAL                   MSEC_TO_UNITS(400, UNIT_1_25_MS)        /**< Minimum acceptable connection interval (0.4 seconds). */
 #define MAX_CONN_INTERVAL                   MSEC_TO_UNITS(650, UNIT_1_25_MS)        /**< Maximum acceptable connection interval (0.65 second). */
 #define SLAVE_LATENCY                       0                                       /**< Slave latency. */
@@ -161,6 +163,7 @@ static TimerHandle_t m_battery_timer;                               /**< Definit
 static TimerHandle_t m_heart_rate_timer;                            /**< Definition of heart rate timer. */
 static TimerHandle_t m_rr_interval_timer;                           /**< Definition of RR interval timer. */
 static TimerHandle_t m_sensor_contact_timer;                        /**< Definition of sensor contact detected timer. */
+static TimerHandle_t m_test_printf_timer;
 
 #if NRF_LOG_ENABLED
 static TaskHandle_t m_logger_thread;                                /**< Definition of Logger thread. */
@@ -168,6 +171,8 @@ static TaskHandle_t m_logger_thread;                                /**< Definit
 
 static void advertising_start(void * p_erase_bonds);
 
+extern void meter_thread(void * arg);
+static TaskHandle_t m_meter_thread;
 
 /**@brief Callback function for asserts in the SoftDevice.
  *
@@ -322,6 +327,11 @@ static void sensor_contact_detected_timeout_handler(TimerHandle_t xTimer)
     ble_hrs_sensor_contact_detected_update(&m_hrs, sensor_contact_detected);
 }
 
+static void test_printf_timeout_handler(TimerHandle_t xTimer)
+{
+    UNUSED_PARAMETER(xTimer);
+		NRF_LOG_INFO("2 seconds past.\r\n");
+}
 
 /**@brief Function for the Timer initialization.
  *
@@ -355,6 +365,12 @@ static void timers_init(void)
                                           NULL,
                                           sensor_contact_detected_timeout_handler);
 
+    m_test_printf_timer = xTimerCreate("TPRF",
+                                          TEST_PRINTF_INTERVAL,
+                                          pdTRUE,
+                                          NULL,
+                                          test_printf_timeout_handler);
+																					
     /* Error checking */
     if ( (NULL == m_battery_timer)
          || (NULL == m_heart_rate_timer)
@@ -531,6 +547,10 @@ static void application_timers_start(void)
     {
         APP_ERROR_HANDLER(NRF_ERROR_NO_MEM);
     }
+//		if (pdPASS != xTimerStart(m_test_printf_timer, OSTIMER_WAIT_FOR_QUEUE))
+//    {
+//        APP_ERROR_HANDLER(NRF_ERROR_NO_MEM);
+//    }
 }
 
 
@@ -628,7 +648,7 @@ static void on_adv_evt(ble_adv_evt_t ble_adv_evt)
             break;
 
         case BLE_ADV_EVT_IDLE:
-            sleep_mode_enter();
+//            sleep_mode_enter();
             break;
 
         default:
@@ -734,7 +754,7 @@ static void bsp_event_handler(bsp_event_t event)
     switch (event)
     {
         case BSP_EVENT_SLEEP:
-            sleep_mode_enter();
+//            sleep_mode_enter();
             break;
 
         case BSP_EVENT_DISCONNECT:
@@ -969,6 +989,12 @@ int main(void)
     nrf_sdh_freertos_init(advertising_start, &erase_bonds);
 
     NRF_LOG_INFO("HRS FreeRTOS example started.");
+		
+		if (pdPASS != xTaskCreate(meter_thread, "SPI_METER", 256, NULL, 1, &m_meter_thread))
+    {
+        APP_ERROR_HANDLER(NRF_ERROR_NO_MEM);
+    }
+		
     // Start FreeRTOS scheduler.
     vTaskStartScheduler();
 
