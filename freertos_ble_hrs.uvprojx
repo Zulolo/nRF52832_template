@@ -638,29 +638,19 @@
               <FilePath>.\nrfx\drivers\src\nrfx_uart.c</FilePath>
             </File>
             <File>
-              <FileName>nrfx_uarte.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\nrfx\drivers\src\nrfx_uarte.c</FilePath>
-            </File>
-            <File>
               <FileName>nrfx_prs.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\nrfx\drivers\src\prs\nrfx_prs.c</FilePath>
             </File>
             <File>
-              <FileName>nrf_drv_clock.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\drivers\legacy\nrf_drv_clock.c</FilePath>
-            </File>
-            <File>
-              <FileName>nrf_drv_uart.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\drivers\legacy\nrf_drv_uart.c</FilePath>
-            </File>
-            <File>
               <FileName>nrfx_spim.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\nrfx\drivers\src\nrfx_spim.c</FilePath>
+            </File>
+            <File>
+              <FileName>nrfx_uarte.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\nrfx\drivers\src\nrfx_uarte.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -776,6 +766,11 @@
               <FileName>sensorsim.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\libraries\sensorsim\sensorsim.c</FilePath>
+            </File>
+            <File>
+              <FileName>nrf_drv_clock.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\drivers\legacy\nrf_drv_clock.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -1513,29 +1508,19 @@
               <FilePath>.\nrfx\drivers\src\nrfx_uart.c</FilePath>
             </File>
             <File>
-              <FileName>nrfx_uarte.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\nrfx\drivers\src\nrfx_uarte.c</FilePath>
-            </File>
-            <File>
               <FileName>nrfx_prs.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\nrfx\drivers\src\prs\nrfx_prs.c</FilePath>
             </File>
             <File>
-              <FileName>nrf_drv_clock.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\drivers\legacy\nrf_drv_clock.c</FilePath>
-            </File>
-            <File>
-              <FileName>nrf_drv_uart.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\drivers\legacy\nrf_drv_uart.c</FilePath>
-            </File>
-            <File>
               <FileName>nrfx_spim.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\nrfx\drivers\src\nrfx_spim.c</FilePath>
+            </File>
+            <File>
+              <FileName>nrfx_uarte.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\nrfx\drivers\src\nrfx_uarte.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -1651,6 +1636,11 @@
               <FileName>sensorsim.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\libraries\sensorsim\sensorsim.c</FilePath>
+            </File>
+            <File>
+              <FileName>nrf_drv_clock.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\drivers\legacy\nrf_drv_clock.c</FilePath>
             </File>
           </Files>
         </Group>

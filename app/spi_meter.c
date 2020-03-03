@@ -14,8 +14,8 @@
 #include "timers.h"
 #include "semphr.h"
 
-#define NRFX_SPIM_SCK_PIN  3
-#define NRFX_SPIM_MOSI_PIN 4
+#define NRFX_SPIM_SCK_PIN  30
+#define NRFX_SPIM_MOSI_PIN 27
 #define NRFX_SPIM_MISO_PIN 28
 #define NRFX_SPIM_SS_PIN   29
 
@@ -48,7 +48,7 @@ void meter_thread(void * arg)
 	nrfx_spim_xfer_desc_t xfer_desc = NRFX_SPIM_XFER_TRX(m_tx_buf, m_length, m_rx_buf, m_length);
 
 	nrfx_spim_config_t spi_config = NRFX_SPIM_DEFAULT_CONFIG;
-	spi_config.frequency      = NRF_SPIM_FREQ_125K;	//NRF_SPIM_FREQ_1M;
+	spi_config.frequency      = NRF_SPIM_FREQ_250K;	//NRF_SPIM_FREQ_1M;
 	spi_config.ss_pin         = NRFX_SPIM_SS_PIN;
 	spi_config.miso_pin       = NRFX_SPIM_MISO_PIN;
 	spi_config.mosi_pin       = NRFX_SPIM_MOSI_PIN;
@@ -57,6 +57,7 @@ void meter_thread(void * arg)
 	spi_config.ss_active_high = false;
 	APP_ERROR_CHECK(nrfx_spim_init(&spi, &spi_config, spim_event_handler, NULL));
 
+	nrf_gpio_cfg_output(31);
 	NRF_LOG_INFO("NRFX SPIM example started.");
 
 	while (1)
@@ -75,6 +76,7 @@ void meter_thread(void * arg)
 		NRF_LOG_FLUSH();
 
 		bsp_board_led_invert(BSP_BOARD_LED_0);
-		vTaskDelay(2000);
+		nrf_gpio_pin_toggle(31);
+		vTaskDelay(1000);
 	}
 }
