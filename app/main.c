@@ -84,6 +84,7 @@
 #include "nrf_log_ctrl.h"
 #include "nrf_log_default_backends.h"
 
+#include "event_groups.h"
 
 #define DEVICE_NAME                         "TEST_HRM"                            /**< Name of device. Will be included in the advertising data. */
 #define MANUFACTURER_NAME                   "TEST"                   /**< Manufacturer. Will be passed to Device Information Service. */
@@ -173,6 +174,8 @@ static void advertising_start(void * p_erase_bonds);
 
 extern void meter_thread(void * arg);
 static TaskHandle_t m_meter_thread;
+
+EventGroupHandle_t m_rtos_events;
 
 /**@brief Callback function for asserts in the SoftDevice.
  *
@@ -984,6 +987,12 @@ int main(void)
     peer_manager_init();
     application_timers_start();
 
+    m_rtos_events = xEventGroupCreate();
+    if( m_rtos_events == NULL )
+    {
+        APP_ERROR_HANDLER(NRF_ERROR_NO_MEM);
+    }
+		
     // Create a FreeRTOS task for the BLE stack.
     // The task will run advertising_start() before entering its loop.
     nrf_sdh_freertos_init(advertising_start, &erase_bonds);

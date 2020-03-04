@@ -397,6 +397,11 @@
               <FileType>1</FileType>
               <FilePath>.\app\spi_meter.c</FilePath>
             </File>
+            <File>
+              <FileName>app_config.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\app\app_config.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -1266,6 +1271,11 @@
               <FileName>spi_meter.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\app\spi_meter.c</FilePath>
+            </File>
+            <File>
+              <FileName>app_config.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\app\app_config.h</FilePath>
             </File>
           </Files>
         </Group>
